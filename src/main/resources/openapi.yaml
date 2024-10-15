@@ -1,0 +1,147 @@
+openapi: 3.0.1
+info:
+  title: To-Do-List-Milton
+  description: API para gestionar tareas.
+  version: 0.0.1-SNAPSHOT
+paths:
+  /:
+    get:
+      summary: "Conexión exitosa"
+      description: "Endpoint para verificar que el front y el back están conectados."
+      responses:
+        '200':
+          description: "Conexión exitosa"
+          content:
+            text/plain:
+              schema:
+                type: string
+  /registrartareas:
+    post:
+      summary: "Registrar tarea"
+      description: "Registra una nueva tarea en el sistema."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: "Pasa el examen del trabajo :D"
+                completed:
+                  type: boolean
+                  example: false
+      responses:
+        '200':
+          description: "Tarea registrada correctamente"
+        '400':
+          description: "Error al registrar la tarea"
+
+  /tareas:
+    get:
+      summary: "Obtener tareas"
+      description: "Devuelve una lista de todas las tareas registradas."
+      parameters:
+        - in: query
+          name: completed
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: "Lista de tareas"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    description:
+                      type: string
+                      example: "Hacer la compra"
+                    completed:
+                      type: boolean
+                      example: false
+
+  /elimartarea/{id}:
+    delete:
+      summary: "Eliminar tarea"
+      description: "Elimina una tarea del sistema utilizando su ID."
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID de la tarea a eliminar"
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Tarea eliminada correctamente"
+        '404':
+          description: "Tarea no encontrada"
+
+  /editartarea/{id}:
+    get:
+      summary: "Obtener tarea por ID"
+      description: "Devuelve una tarea específica según su ID."
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID de la tarea a obtener"
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Tarea encontrada"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  description:
+                    type: string
+                    example: "Hacer la compra"
+                  completed:
+                    type: boolean
+                    example: false
+        '404':
+          description: "Tarea no encontrada"
+
+  /actualizar/{id}:
+    patch:
+      summary: "Actualizar tarea"
+      description: "Actualiza los datos de una tarea existente."
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: "ID de la tarea a actualizar"
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: "Comprar frutas"
+                completed:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: "Tarea actualizada correctamente"
+        '404':
+          description: "Tarea no encontrada"

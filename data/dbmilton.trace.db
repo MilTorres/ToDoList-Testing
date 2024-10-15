@@ -1,0 +1,8 @@
+2024-10-10 15:46:43.660889-06:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]Slect * from TAREAS"; se esperaba "SAVEPOINT, SCRIPT, SHUTDOWN"
+Syntax error in SQL statement "[*]Slect * from TAREAS"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+Slect * from TAREAS [42001-224]
+2024-10-10 15:46:46.276670-06:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]Slect * from TAREAS"; se esperaba "SAVEPOINT, SCRIPT, SHUTDOWN"
+Syntax error in SQL statement "[*]Slect * from TAREAS"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+Slect * from TAREAS [42001-224]

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>M I L T O N</title>
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+<div class="hero_area">
+    <header class="header_section">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                <a class="navbar-brand" href="index.html">
+                        <span>
+                            Milton To Do List
+                        </span>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="nuevatarea.html"> Registrar Tarea </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<section class="contact_section layout_padding">
+    <div class="container">
+        <h1 class="h3table mb-2 text-gray-800" align="center">Tabla De Tareas</h1>
+
+        <div class="text-center mb-4">
+            <button style="background-color: black; color: white; border: none;" onclick="fetchTareas('completadas')">Completadas</button>
+            <button style="background-color: black; color: white; border: none;" onclick="fetchTareas('noCompletadas')">No Completadas</button>
+            <button style="background-color: black; color: white; border: none;" onclick="fetchTareas()">Todas</button>
+        </div>
+
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="tableusuarios table-bordered" id="tusuarios" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descripción</th>
+                            <th>Completada</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tareasTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">Editar Tarea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="editId">ID</label>
+                        <input type="text" class="form-control" id="editId" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">Descripción</label>
+                        <input type="text" class="form-control" id="editDescription" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCompleted">Completada</label>
+                        <input type="checkbox" id="editCompleted">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardarCambios()">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="container-fluid footer_section">
+    <p>&copy; 2024 Milton</p>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/tabla-tareas.js"></script>
+</body>
+
+</html>
